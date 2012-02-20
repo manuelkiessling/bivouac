@@ -3,7 +3,7 @@ var start = function(handleNewConnection) {
   var io     = require('socket.io').listen(server);
   var fs     = require('fs');
 
-  server.listen(80);
+  server.listen(8080);
 
   function handler(req, res) {
     fs.readFile(__dirname + '/htdocs/index.html', function(err, data) {
@@ -18,17 +18,16 @@ var start = function(handleNewConnection) {
 
   io.sockets.on('connection', function(socket) {
     console.log('New connection');
-    var handlers = handleNewConnection();
-
-    socket.on('say', function(data) {
-      console.log('Incoming data');
-      handlers.handleIncomingData(data);
-    });
-
     function outgoingHandler(text) {
       socket.emit('hear', text);
     }
-    handlers.registerOutgoingDataHandler(outgoingHandler);
+    var handleIncomingData = handleNewConnection(outgoingHandler);
+
+    socket.on('say', function(data) {
+      console.log('Incoming data');
+      handleIncomingData(data);
+    });
+
   });
 
 }

@@ -5,32 +5,22 @@ Communication = require("./communication.js")["Communication"];
 var room = new Room("default");
 var userId = 0;
 
-function handleNewConnection() {
+function handleNewConnection(outgoingHandler) {
   userId = userId + 1;
 
   var user = new User("guest" + userId);
-  var outgoingHandler = undefined;
-
   room.addUser(user);
+
+  function writeToClient(text) {
+    outgoingHandler(text);
+  }
+  user.registerWriteToClient(writeToClient);
 
   function handleIncomingData(text) {
     var communication = new Communication(user, text);
     room.transport(communication);
   }
-
-  function registerOutgoingDataHandler(theOutgoingHandler) {
-    outgoingHandler = theOutgoingHandler;
-  }
-
-  function writeToClient(text) {
-    outgoingHandler(text);
-  }
-
-  user.registerWriteToClient(writeToClient);
-
-  return { handleIncomingData: handleIncomingData,
-           registerOutgoingDataHandler: registerOutgoingDataHandler };
-
+  return handleIncomingData;
 }
 
 require("./socketioserver.js").start(handleNewConnection);

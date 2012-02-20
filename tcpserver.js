@@ -12,17 +12,17 @@ var start = function(handleNewConnection) {
 
   server.on('connection', function(socket) {
     console.log('New connection');
-    var handlers = handleNewConnection();
-
-    socket.on('data', function(data) {
-      console.log('Incoming data');
-      handlers.handleIncomingData(data.toString());
-    });
 
     function outgoingHandler(text) {
       socket.write(text);
     }
-    handlers.registerOutgoingDataHandler(outgoingHandler);
+    var handleIncomingData = handleNewConnection(outgoingHandler);
+
+    socket.on('data', function(data) {
+      console.log('Incoming data');
+      handleIncomingData(data.toString());
+    });
+
   });
 
   server.listen(port);
