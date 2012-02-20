@@ -11,7 +11,7 @@ var start = function(handleNewConnection) {
   });
 
   server.on('connection', function(socket) {
-    console.log('New connection');
+    console.log('New connection from ' + socket.remoteAddress);
 
     function outgoingHandler(text) {
       socket.write(text);
