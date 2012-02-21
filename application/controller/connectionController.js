@@ -7,11 +7,11 @@ var userId = 0;
 var outgoingHandlers = {};
 var renderer = null;
 
-var setRenderer = function (theRenderer) {
+var setRenderer = function(theRenderer) {
   renderer = theRenderer;
 }
 
-var handleNewConnection = function (outgoingHandler) {
+var handleNewConnection = function(outgoingHandler) {
   userId = userId + 1;
 
   var user = new User(userId, "guest" + userId);
