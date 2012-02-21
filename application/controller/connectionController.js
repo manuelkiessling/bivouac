@@ -6,25 +6,29 @@ var room = new Room("default");
 var userId = 0;
 var outgoingHandlers = {};
 var renderer = null;
+var server = null;
 
-var setRenderer = function(theRenderer) {
+var attachRenderer = function(theRenderer) {
   renderer = theRenderer;
 }
 
-var handleNewConnection = function(outgoingHandler) {
-  userId = userId + 1;
+var attachServer = function(theServer) {
+  server = theServer;
 
-  var user = new User(userId, "guest" + userId);
-  room.addUser(user);
+  server.on('newConnection', function(incomingHandler, outgoingHandler) {
+    userId = userId + 1;
 
-  outgoingHandlers[user] = outgoingHandler;
+    var user = new User(userId, "guest" + userId);
+    room.addUser(user);
 
-  function handleIncomingData(text) {
-    var communication = new Communication(user, text);
-    room.addCommunication(communication);
-    deliver();
-  }
-  return handleIncomingData;
+    outgoingHandlers[user] = outgoingHandler;
+
+    incomingHandler.on('newMessage', function(data) {
+      var communication = new Communication(user, data);
+      room.addCommunication(communication);
+      deliver();
+    });
+  });
 }
 
 var deliver = function() {
@@ -46,5 +50,5 @@ var deliver = function() {
   }
 };
 
-exports.setRenderer = setRenderer;
-exports.handleNewConnection = handleNewConnection;
+exports.attachRenderer = attachRenderer;
+exports.attachServer = attachServer;

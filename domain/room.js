@@ -23,7 +23,10 @@ Room.prototype.getCommunications = function() {
 
 Room.prototype.markCommunicationAsDelivered = function(communication) {
   var index = this.communications.indexOf(communication);
-  if (index !== -1) this.communications.splice(index, 1);
+  if (index !== -1) {
+    console.log('Delivered message "' + communication.message + '" of user ' + communication.user.name);
+    this.communications.splice(index, 1);
+  }
 }
 
 exports.Room = Room;

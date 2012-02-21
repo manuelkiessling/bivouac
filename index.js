@@ -3,6 +3,8 @@
   var connectionController = require("./application/controller/connectionController.js");
   var server = require("./application/server/socketioserver.js");
 
-  connectionController.setRenderer(renderer);
-  server.start(connectionController.handleNewConnection);
+  connectionController.attachRenderer(renderer);
+  connectionController.attachServer(server);
+
+  server.start();
 })();
