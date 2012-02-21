@@ -6,7 +6,7 @@ var start = function(handleNewConnection) {
   server.listen(8080);
 
   function handler(req, res) {
-    fs.readFile(__dirname + '../../htdocs/index.html', function(err, data) {
+    fs.readFile(__dirname + '/../view/index.html', function(err, data) {
       if (err) {
         res.writeHead(500);
         return res.end('Error loading index.html');
@@ -18,8 +18,8 @@ var start = function(handleNewConnection) {
 
   io.sockets.on('connection', function(socket) {
     console.log('New connection');
-    function outgoingHandler(text) {
-      socket.emit('hear', text);
+    function outgoingHandler(data) {
+      socket.emit('hear', data);
     }
     var handleIncomingData = handleNewConnection(outgoingHandler);
 
