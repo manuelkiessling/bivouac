@@ -15,6 +15,15 @@ and a strong separation of concerns in mind.
 
 bivouac is written in JavaScript, for the Node.js platform.
 
+## Installation
+
+    git clone https://github.com/ManuelKiessling/bivouac.git
+    cd bivouac
+    npm install
+    node ./index.js
+
+Then open your browser and point it at http://localhost:8080/
+
 ## License
 
 Copyright (c) 2012, Manuel Kiessling
