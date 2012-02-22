@@ -1,8 +1,8 @@
 var bivouac = {
 
-  start: function() {
+  start: function(usernameElement) {
     var socket = io.connect('http://localhost');
-    socket.emit('enter', 'Guest');
+    socket.emit('enter', usernameElement.val());
     return socket;
   },
 

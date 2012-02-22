@@ -21,7 +21,7 @@ var attachServer = function(theServer) {
     incomingHandler.on('newUser', function(name) {
       userId = userId + 1;
 
-      user = new User(userId, name + userId);
+      user = new User(userId, name);
       room.addUser(user);
 
       outgoingHandlers[user] = outgoingHandler;

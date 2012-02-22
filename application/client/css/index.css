@@ -16,8 +16,11 @@
   overflow-x: scroll;
 }
 
-input.input-xlarge {
+.input-xlarge {
   height: 28px;
+}
+
+#chatarea input.input-xlarge {
   width: 420px;
 }
 
