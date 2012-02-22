@@ -1,0 +1,26 @@
+.navbar-inner {
+  border-radius: 0;
+}
+
+.well {
+  background-color: #f9f9f9;
+}
+
+#sidebar {
+  background-color: #eee;
+}
+
+#messages {
+  background-color: #fff;
+  height: 60%;
+  overflow-x: scroll;
+}
+
+input.input-xlarge {
+  height: 28px;
+  width: 420px;
+}
+
+.message .says {
+  font-weight: bold;
+}

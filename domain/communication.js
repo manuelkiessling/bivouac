@@ -1,6 +1,11 @@
-var Communication = function(user, message) {
+var UserCommunication = function(user, message) {
   this.user = user;
   this.message = message;
 }
 
-exports.Communication = Communication;
+var SystemCommunication = function(message) {
+  this.message = message;
+}
+
+exports.UserCommunication = UserCommunication;
+exports.SystemCommunication = SystemCommunication;

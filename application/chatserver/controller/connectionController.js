@@ -1,6 +1,7 @@
 Room = require("../../../domain/room.js")["Room"];
 User = require("../../../domain/user.js")["User"];
-Communication = require("../../../domain/communication.js")["Communication"];
+UserCommunication = require("../../../domain/communication.js")["UserCommunication"];
+SystemCommunication = require("../../../domain/communication.js")["SystemCommunication"];
 
 var room = new Room("default");
 var userId = 0;
@@ -14,18 +15,24 @@ var attachRenderer = function(theRenderer) {
 
 var attachServer = function(theServer) {
   server = theServer;
+  var user;
 
   server.on('newConnection', function(incomingHandler, outgoingHandler) {
-    userId = userId + 1;
+    incomingHandler.on('newUser', function(name) {
+      userId = userId + 1;
 
-    var user = new User(userId, "guest" + userId);
-    room.addUser(user);
+      user = new User(userId, name + userId);
+      room.addUser(user);
 
-    outgoingHandlers[user] = outgoingHandler;
+      outgoingHandlers[user] = outgoingHandler;
 
-    incomingHandler.on('newMessage', function(data) {
-      var communication = new Communication(user, data);
+      deliver();
+    });
+
+    incomingHandler.on('newMessage', function(message) {
+      var communication = new UserCommunication(user, message);
       room.addCommunication(communication);
+
       deliver();
     });
   });
@@ -39,11 +46,9 @@ var deliver = function() {
     var users = room.getUsers();
     var numberOfUsers = users.length;
 
-    for (i = 0; i < numberOfCommunications; i++) {
-      for (j = 0; j < numberOfUsers; j++) {
-        if (users[j] != communications[i].user) {
-          outgoingHandlers[users[j]](renderer.render(communications[i].user.name, communications[i].message));
-        }
+    for (var i = 0; i < numberOfCommunications; i++) {
+      for (var j = 0; j < numberOfUsers; j++) {
+        outgoingHandlers[users[j]](renderer.render(communications[i]));
       }
       room.markCommunicationAsDelivered(communications[i]);
     }

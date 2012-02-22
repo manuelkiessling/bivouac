@@ -7,6 +7,8 @@ var Room = function(name) {
 Room.prototype.addUser = function(user) {
   console.log("Entered room: " + user.name);
   this.users.push(user);
+  var communication = new SystemCommunication("User " + user.name + " entered the chat.");
+  this.addCommunication(communication);
 }
 
 Room.prototype.getUsers = function() {
@@ -24,7 +26,7 @@ Room.prototype.getCommunications = function() {
 Room.prototype.markCommunicationAsDelivered = function(communication) {
   var index = this.communications.indexOf(communication);
   if (index !== -1) {
-    console.log('Delivered message "' + communication.message + '" of user ' + communication.user.name);
+    console.log('Delivered message: ' + communication.message);
     this.communications.splice(index, 1);
   }
 }

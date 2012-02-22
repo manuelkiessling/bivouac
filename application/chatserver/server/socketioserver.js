@@ -4,8 +4,8 @@ var EventEmitter = require('events').EventEmitter;
 var IncomingHandler = function() {}
 util.inherits(IncomingHandler, EventEmitter);
 
-IncomingHandler.prototype.receive = function(data) {
-  this.emit('newMessage', data.toString());
+IncomingHandler.prototype.receive = function(type, data) {
+  this.emit(type, data.toString());
 }
 
 var Server = function() {}
@@ -19,13 +19,19 @@ Server.prototype.start = function(webserver) {
 
   io.sockets.on('connection', function(socket) {
     var incomingHandler = new IncomingHandler();
-    // Browser sends new message
+
+    // User logs into chat
+    socket.on('enter', function(data) {
+      incomingHandler.receive('newUser', data);
+    });
+
+    // User sends new message
     socket.on('say', function(data) {
-      incomingHandler.receive(data);
+      incomingHandler.receive('newMessage', data);
     });
 
     // This function is emitted in order to allow clients of this object to send data to this user's browser
-    var outgoingHandler = function (data) {
+    var outgoingHandler = function(data) {
       socket.emit('hear', data);
     }
     that.emit('newConnection', incomingHandler, outgoingHandler);

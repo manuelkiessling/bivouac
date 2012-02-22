@@ -1,8 +1,12 @@
 <html>
   <head>
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/index.css" rel="stylesheet"/>
+
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/bivouac.js"></script>
+    <script src="/application/bivouac.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
     <script type="text/javascript">
       $(document).ready(function() {
         var socket = bivouac.start($);
@@ -13,9 +17,48 @@
   </head>
 
   <body>
-    <div id="inputArea">
-      Say: <input id="input" type="text">
+     <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">bivouac</a>
+        </div>
+      </div>
     </div>
-    <div id="messages"> </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span3">
+          <div id="sidebar" class="well">
+            Welcome to the bivouac group chat.
+            Simply type along to talk with other people
+            in this chat.
+          </div>
+        </div>
+        <div class="span8">
+
+          <div id="chatarea" class="well">
+
+            <div id="messages" class="well"></div>
+
+            <div id="inputarea">
+              <form class="form-horizontal">
+                <fieldset>
+                  <div class="control-group">
+                    <label class="control-label" for="input">
+                      Say:
+                    </label>
+                    <div class="controls">
+                      <input id="input" type="text" class="input-xlarge">
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+
+          </div>
+        </div>
+        <div class="span1"></div>
+      </div>
+    </div>
   </body>
 </html>
