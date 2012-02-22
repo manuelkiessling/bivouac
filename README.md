@@ -9,7 +9,7 @@ software package which allows to easily setup and run non-public web-based
 group chats with dead-simple file-sharing (drag a file into the chat, and
 it's immediately available as a download for all chat members).
 
-Besides those "feature goal", my secondary goal is to learn how to architect
+Besides these "feature goals", my secondary goal is to learn how to architect
 Node.js applications that are relatively complex, with domain-driven design
 and a strong separation of concerns in mind.
 
