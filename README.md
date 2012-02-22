@@ -20,7 +20,7 @@ bivouac is written in JavaScript, for the Node.js platform.
     git clone https://github.com/ManuelKiessling/bivouac.git
     cd bivouac
     npm install
-    node ./index.js
+    node ./bivouac.js
 
 Then open your browser and point it at http://localhost:8080/
 

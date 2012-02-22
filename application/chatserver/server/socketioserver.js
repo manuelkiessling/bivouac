@@ -11,25 +11,11 @@ IncomingHandler.prototype.receive = function(data) {
 var Server = function() {}
 util.inherits(Server, EventEmitter);
 
-Server.prototype.start = function() {
+Server.prototype.start = function(webserver) {
   var that = this;
-  var httpd = require('http').createServer(handler);
-  var io    = require('socket.io').listen(httpd);
-  var fs    = require('fs');
+  var io    = require('socket.io').listen(webserver);
 
-  httpd.listen(8080);
   io.set('log level', 1);
-
-  function handler(req, res) {
-    fs.readFile(__dirname + '/../view/index.html', function(err, data) {
-      if (err) {
-        res.writeHead(500);
-        return res.end('Error loading index.html');
-      }
-      res.writeHead(200);
-      res.end(data);
-    });
-  }
 
   io.sockets.on('connection', function(socket) {
     var incomingHandler = new IncomingHandler();

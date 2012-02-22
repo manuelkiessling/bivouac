@@ -1,6 +1,6 @@
-Room = require("../../domain/room.js")["Room"];
-User = require("../../domain/user.js")["User"];
-Communication = require("../../domain/communication.js")["Communication"];
+Room = require("../../../domain/room.js")["Room"];
+User = require("../../../domain/user.js")["User"];
+Communication = require("../../../domain/communication.js")["Communication"];
 
 var room = new Room("default");
 var userId = 0;
