@@ -1,5 +1,30 @@
 @import url('/vendor/bootstrap/css/bootstrap.min.css');
 
+html, body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow: auto;
+  padding-bottom: 50px; /* must be same height as the footer */
+}
+
+a.brand.logo {
+  font-weight: bold;
+  font-size: 160%;
+  color: #08C;
+}
+
+a.brand span.subtitle {
+  font-weight: normal;
+  font-size: 75%;
+  color: #ccc;
+}
+
 .navbar-inner {
   border-radius: 0;
 }
@@ -14,7 +39,7 @@
 
 #messages {
   background-color: #fff;
-  height: 60%;
+  height: 400px;
   overflow-x: scroll;
 }
 
@@ -50,4 +75,15 @@
 
 .message .says {
   font-weight: bold;
+}
+
+footer {
+  position: relative;
+  margin-top: -50px; /* negative value of footer height */
+  height: 50px;
+  clear: both;
+  text-align: center;
+  background-color: #ddd;
+  color: #444;
+  padding-top: 16px;
 }
