@@ -39,7 +39,6 @@ a.brand span.subtitle {
 
 #messages {
   background-color: #fff;
-  height: 400px;
   overflow-x: scroll;
 }
 
@@ -65,12 +64,8 @@ a.brand span.subtitle {
   margin: 6px;
 }
 
-.input-xlarge {
-  height: 28px;
-}
-
 #chatarea input.input-xlarge {
-  width: 420px;
+  width: 410px;
 }
 
 .message .says {
