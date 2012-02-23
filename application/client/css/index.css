@@ -1,3 +1,5 @@
+@import url("/vendor/bootstrap/css/bootstrap.min.css");
+
 .navbar-inner {
   border-radius: 0;
 }
@@ -14,6 +16,10 @@
   background-color: #fff;
   height: 60%;
   overflow-x: scroll;
+}
+
+#messages.filehover {
+  background-color: #ff9;
 }
 
 .input-xlarge {

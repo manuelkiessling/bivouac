@@ -4,30 +4,14 @@
     <link href="/css/index.css" rel="stylesheet"/>
 
     <script src="/vendor/jquery/jquery.1.7.1.min.js"></script>
+    <script src="/vendor/jquery/jquery.filedrop.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap-modal.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap-transition.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/application/bivouac.js"></script>
-
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('#username').keypress(function(e) {
-          if (e.which == 13) {
-            e.preventDefault();
-            $('#loginModal').modal('hide');
-            return false;
-          }
-        });
-
-        $('#username').focus();
-        $('#loginModal').modal();
-        $('#loginModal').on('hide', function () {
-          var socket = bivouac.start($('#username'));
-          bivouac.handleInput(socket, $('#input'));
-          bivouac.handleOutput(socket, $('#messages'));
-        });
-      });
-    </script>
+    <script src="/lib/init.js"></script>
+    <script src="/lib/chat.js"></script>
+    <script src="/lib/fileupload.js"></script>
+    <script src="/app/index.js"></script>
   </head>
 
   <body>
@@ -78,7 +62,9 @@
 
           <div id="chatarea" class="well">
 
-            <div id="messages" class="well"></div>
+            <div id="filedroparea">
+              <div id="messages" class="well"></div>
+            </div>
 
             <div id="inputarea">
               <form class="form-horizontal">
