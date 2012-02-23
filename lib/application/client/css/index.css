@@ -39,6 +39,15 @@ a.brand span.subtitle {
   background-color: #eee;
 }
 
+#uploadprogressarea {
+  background-color: #beb;
+  display: none;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: bold;
+}
+
+
 #messages {
   background-color: #fff;
   overflow-x: scroll;
