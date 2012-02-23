@@ -1,10 +1,10 @@
-Room = require("../../../domain/room.js")["Room"];
-User = require("../../../domain/user.js")["User"];
-UserCommunication = require("../../../domain/communication.js")["UserCommunication"];
-SystemCommunication = require("../../../domain/communication.js")["SystemCommunication"];
-DownloadCommunication = require("../../../domain/communication.js")["DownloadCommunication"];
+var Room = require('../../../domain/room.js')['Room'];
+var User = require('../../../domain/user.js')['User'];
+var UserCommunication = require('../../../domain/communication.js')['UserCommunication'];
+var SystemCommunication = require('../../../domain/communication.js')['SystemCommunication'];
+var DownloadCommunication = require('../../../domain/communication.js')['DownloadCommunication'];
 
-var room = new Room("default");
+var room = new Room('default', SystemCommunication);
 var userId = 0;
 var outgoingHandlers = {};
 var renderer = null;

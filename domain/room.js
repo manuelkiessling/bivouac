@@ -1,15 +1,16 @@
 var util = require('util');
 
-var Room = function(name) {
+var Room = function(name, SystemCommunication) {
   this.name = name;
+  this.SystemCommunication = SystemCommunication;
   this.users = [];
   this.communications = [];
 }
 
 Room.prototype.addUser = function(user) {
-  console.log("Entered room: " + user.name);
+  console.log('Entered room: ' + user.name);
   this.users.push(user);
-  var communication = new SystemCommunication("User " + user.name + " entered the chat.");
+  var communication = new this.SystemCommunication('User ' + user.name + ' entered the chat.');
   this.addCommunication(communication);
 }
 
