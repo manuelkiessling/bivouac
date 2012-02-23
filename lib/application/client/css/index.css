@@ -5,12 +5,14 @@ html, body {
 }
 
 #wrap {
+  padding: 0;
+  margin: 0;
   min-height: 100%;
 }
 
 #main {
   overflow: auto;
-  padding-bottom: 50px; /* must be same height as the footer */
+  padding-bottom: 60px; /* must be same height as the footer + padding of footer */
 }
 
 a.brand.logo {
@@ -74,11 +76,12 @@ a.brand span.subtitle {
 
 footer {
   position: relative;
-  margin-top: -50px; /* negative value of footer height */
-  height: 50px;
+  margin-top: -60px; /* negative value of footer height */
+  height: 40px;
   clear: both;
   text-align: center;
   background-color: #ddd;
   color: #444;
-  padding-top: 16px;
+  padding-top: 20px;
+  vertical-align: middle;
 }
