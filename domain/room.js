@@ -1,3 +1,5 @@
+var util = require('util');
+
 var Room = function(name) {
   this.name = name;
   this.users = [];
@@ -26,7 +28,7 @@ Room.prototype.getCommunications = function() {
 Room.prototype.markCommunicationAsDelivered = function(communication) {
   var index = this.communications.indexOf(communication);
   if (index !== -1) {
-    console.log('Delivered message: ' + communication.message);
+    console.log('Delivered communication: ' + util.inspect(communication));
     this.communications.splice(index, 1);
   }
 }

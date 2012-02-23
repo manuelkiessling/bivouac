@@ -2,6 +2,7 @@ Room = require("../../../domain/room.js")["Room"];
 User = require("../../../domain/user.js")["User"];
 UserCommunication = require("../../../domain/communication.js")["UserCommunication"];
 SystemCommunication = require("../../../domain/communication.js")["SystemCommunication"];
+DownloadCommunication = require("../../../domain/communication.js")["DownloadCommunication"];
 
 var room = new Room("default");
 var userId = 0;
@@ -55,5 +56,12 @@ var deliver = function() {
   }
 };
 
+var handleUpload = function(filename, type) {
+  var communication = new DownloadCommunication(filename, type, '/download/' + encodeURIComponent(filename));
+  room.addCommunication(communication);
+  deliver();
+};
+
 exports.attachRenderer = attachRenderer;
 exports.attachServer = attachServer;
+exports.handleUpload = handleUpload;

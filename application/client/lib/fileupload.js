@@ -11,7 +11,7 @@ bivouac.fileupload = {
 
     options.dropElement.filedrop({
       paramname: 'file',
-      maxfiles: 1,
+      maxfiles: 5,
       maxfilesize: 5,
       url: options.targetUrl,
       dragEnter: options.dragEnterCallback,

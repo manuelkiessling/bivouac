@@ -31,7 +31,7 @@ $(document).ready(function() {
     },
 
     uploadStartedCallback: function(i, file, len) {
-      window.alert('go!');
+      $('#messages').removeClass('filehover');
     },
 
     progressUpdated: function(i, file, progress) {
@@ -43,6 +43,7 @@ $(document).ready(function() {
     },
 
     errorCallback: function(message) {
+      $('#messages').removeClass('filehover');
       window.alert(message);
     }
   });

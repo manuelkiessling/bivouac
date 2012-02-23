@@ -19,7 +19,25 @@
 }
 
 #messages.filehover {
-  background-color: #ff9;
+  background-color: #ffe;
+}
+
+#messages div.message.file {
+  background-color: #ffe;
+  text-align: center;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 8px;
+}
+
+#messages div.message.file.inline img {
+  background-color: #fff;
+  height: 50px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 6px;
 }
 
 .input-xlarge {
