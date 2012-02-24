@@ -1,11 +1,11 @@
 (function () {
-  var filesharing = require('./lib/application/filesharing/filesharing.js');
-  var webserver = require('./lib/application/webserver/webserver.js');
-  var chatserver = require('./lib/application/chatserver/server/socketioserver.js');
-  var renderer = require('./lib/application/chatserver/renderer/objectRenderer.js');
-  var connectionController = require('./lib/application/chatserver/controller/connectionController.js');
+  var filesharing = require('./lib/server/app/filesharing/filesharing.js');
+  var httpd = require('./lib/server/app/httpd/httpd.js');
+  var chatd = require('./lib/server/app/chatd/server/socketio.js');
+  var objectRenderer = require('./lib/server/app/chatd/renderer/object.js');
+  var connectionController = require('./lib/server/app/chatd/controller/connection.js');
 
-  connectionController.attachRenderer(renderer);
-  connectionController.attachServer(chatserver);
-  chatserver.start(webserver.start(process.cwd() + '/lib/application/client', filesharing.handleUpload, connectionController.handleUpload, filesharing.handleDownload));
+  connectionController.attachRenderer(objectRenderer);
+  connectionController.attachServer(chatd);
+  chatd.start(httpd.start(process.cwd() + '/lib/client', filesharing.handleUpload, connectionController.handleUpload, filesharing.handleDownload));
 })();
