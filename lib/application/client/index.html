@@ -5,17 +5,8 @@
 
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/css/index.css" rel="stylesheet"/>
-
-    <script src="/vendor/css_browser_selector.js"></script>
-    <script src="/vendor/jquery/jquery.1.7.1.min.js"></script>
-    <script src="/vendor/jquery/jquery.filedrop.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap-modal.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap-transition.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/lib/init.js"></script>
-    <script src="/lib/chat.js"></script>
-    <script src="/lib/fileupload.js"></script>
-    <script src="/app/index.js"></script>
+	
+	 <script src="/vendor/css_browser_selector.js"></script>
   </head>
 
   <body>
@@ -110,5 +101,15 @@
     <footer>
       bivouac is © 2012 by <a href="http://manuel.kiessling.net/" title="The Log Book Of Manuel Kiessling">Manuel Kiessling</a>. Visit <a href="https://github.com/ManuelKiessling/bivouac" title="The bivouac GitHub repository">the project homepage</a> on GitHub.
     </footer>
+	<script src="vendor/require.1.0.7.min.js"></script>	
+	<script>
+		require({
+			baseUrl: 'app',
+			paths: {
+				jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min'
+			},
+			priority: ['jquery']
+		}, ['main']);
+    </script>
   </body>
 </html>
