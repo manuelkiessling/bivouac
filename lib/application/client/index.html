@@ -6,6 +6,7 @@
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/css/index.css" rel="stylesheet"/>
 
+    <script src="/vendor/css_browser_selector.js"></script>
     <script src="/vendor/jquery/jquery.1.7.1.min.js"></script>
     <script src="/vendor/jquery/jquery.filedrop.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap-modal.js"></script>
@@ -77,30 +78,27 @@
               </p>
             </div>
             <div id="uploadprogressarea" class="well">
-              Uploading...
+              <p>
+                Uploading...
+              </p>
+              <p>
+                <img src="/assets/progressbar.gif"/>
+              </p>
             </div>
           </div>
           <div class="span9">
 
-            <div id="chatarea" class="well">
+            <div id="chatarea">
 
               <div id="filedroparea">
-                <div id="messages" class="well"></div>
+                <div id="messages"></div>
               </div>
 
               <div id="inputarea">
-                <form class="form-horizontal">
-                  <fieldset>
-                    <div class="control-group">
-                      <label class="control-label" for="input">
-                        Your message:
-                      </label>
-                      <div class="controls">
-                        <input id="input" type="text" class="input-xlarge">
-                      </div>
-                    </div>
-                  </fieldset>
-                </form>
+                <label id="chatprompt" class="control-label" for="input">
+                  Your message:
+                </label>
+                <input id="input" type="text">
               </div>
 
             </div>
