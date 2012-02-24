@@ -1,6 +1,6 @@
 var test = require('utest');
 var assert = require('assert');
-var Room = require('../../lib/domain/room.js').Room;
+var Room = require('../../../lib/server/domain/room.js').Room;
 
 var SystemCommunication = function(message) {
   this.message = message;
