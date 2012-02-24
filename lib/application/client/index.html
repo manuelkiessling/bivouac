@@ -2,11 +2,8 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/css/index.css" rel="stylesheet"/>
-	
-	 <script src="/vendor/css_browser_selector.js"></script>
+    <script data-main="/scripts/app/index" src="/scripts/vendor/require-jquery.js"></script>
+    <link href="/assets/css/index.css" rel="stylesheet"/>
   </head>
 
   <body>
@@ -73,7 +70,7 @@
                 Uploading...
               </p>
               <p>
-                <img src="/assets/progressbar.gif"/>
+                <img src="/assets/images/progressbar.gif"/>
               </p>
             </div>
           </div>
@@ -101,15 +98,5 @@
     <footer>
       bivouac is © 2012 by <a href="http://manuel.kiessling.net/" title="The Log Book Of Manuel Kiessling">Manuel Kiessling</a>. Visit <a href="https://github.com/ManuelKiessling/bivouac" title="The bivouac GitHub repository">the project homepage</a> on GitHub.
     </footer>
-	<script src="vendor/require.1.0.7.min.js"></script>	
-	<script>
-		require({
-			baseUrl: 'app',
-			paths: {
-				jquery: 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min'
-			},
-			priority: ['jquery']
-		}, ['main']);
-    </script>
   </body>
 </html>
