@@ -20,6 +20,16 @@ test('domain', {
   'new domain.UserCommunication returns a userCommunication': function() {
     var userCommunication = new domain.UserCommunication(null, null);
     assert.equal(true, userCommunication instanceof domain.UserCommunication);
+  },
+
+  'new domain.SystemCommunication returns a systemCommunication': function() {
+    var systemCommunication = new domain.SystemCommunication(null);
+    assert.equal(true, systemCommunication instanceof domain.SystemCommunication);
+  },
+
+  'new domain.DownloadCommunication returns a downloadCommunication': function() {
+    var downloadCommunication = new domain.DownloadCommunication(null, null);
+    assert.equal(true, downloadCommunication instanceof domain.DownloadCommunication);
   }
 
 });
