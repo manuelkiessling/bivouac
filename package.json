@@ -1,7 +1,7 @@
 {
   "name": "bivouac",
   "description": "Non-public group chat with easy file sharing",
-  "main": "./index.js",
+  "main": "./bivouac.js",
   "version": "0.0.1",
   "author": "Manuel Kiessling (http://github.com/ManuelKiessling)",
   "engine": "node >= 0.6.10",
