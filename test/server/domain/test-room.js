@@ -1,3 +1,4 @@
+"use strict";
 var test = require('utest');
 var assert = require('assert');
 var Room = require('../../../lib/server/domain/room.js').Room;

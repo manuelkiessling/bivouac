@@ -1,3 +1,4 @@
+"use strict";
 var test = require('utest');
 var assert = require('assert');
 var domain = require('../../../lib/server/domain/domain.js');

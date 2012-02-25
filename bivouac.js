@@ -1,3 +1,4 @@
+"use strict";
 (function () {
   var filesharing = require('./lib/server/app/filesharing/filesharing.js');
   var httpd = require('./lib/server/app/httpd/httpd.js');
