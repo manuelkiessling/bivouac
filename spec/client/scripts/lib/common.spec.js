@@ -1,23 +1,18 @@
 "use strict";
 var requirejs = require('requirejs');
-var test = require('utest');
-var assert = require('assert');
 
 requirejs([__dirname + '/../../../../lib/client/scripts/lib/common.js'], function(common) {
 
-  test('common', {
+  describe('urlParam', function() {
 
-    before: function() {
-    },
-
-    'urlParam finds a param': function() {
+    it('finds the correct value of a given GET param', function() {
       global.window = {
         location: {
           href: 'http://www.example.com/foo.bar?question=unknown&answer=42'
         }
       };
-      assert.equal('42', common.urlParam('answer'));
-    }
+      expect(common.urlParam('answer')).toEqual('42');
+    });
 
   });
 
