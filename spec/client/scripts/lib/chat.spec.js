@@ -44,7 +44,7 @@ requirejs([__dirname + '/../../../../lib/client/scripts/lib/chat.js'], function(
       expect(mock.callback).toHaveBeenCalled();
     });
 
-    it('appends the correct html if a user communication is received', function() {
+    it('appends the correct html and scrolls the messages area if a user communication is received', function() {
       var communication = {
         type: 'user',
         username: 'johndoe',
