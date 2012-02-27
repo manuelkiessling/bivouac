@@ -6,7 +6,6 @@ var mocks = {
     this.message = message;
   }
 };
-var SystemCommunication =
 
 describe('addUser', function() {
 
