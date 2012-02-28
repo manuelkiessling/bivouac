@@ -27,23 +27,32 @@
       <div id="modals">
         <div class="modal fade" id="createChatModal">
           <div class="modal-header">
-            <a class="close" data-dismiss="modal">x</a>
             <h3>Create a new chat</h3>
           </div>
           <div class="modal-body">
 
-            <a class="btn btn-primary">Create chat</a>
+            <p>
+              Welcome to bivouac. This service let's you create non-public
+              group chat rooms with easy filesharing  - literally in just one click.
+            </p>
+
+            <p>
+              Simply hit the <strong>Create and enter chat</strong> button below, and
+              your personal chat is instantly available. Send the URL of the chat
+              to everyone you want to invite - because the URL is non-public,
+              noone else will be able to find your chat.
+            </p>
 
           </div>
           <div class="modal-footer">
+            <form method="post" action="/createRoom">
+              <fieldset>
+                <input type="submit" value="Create and enter chat" class="btn btn-primary">
+              </fieldset>
+            </form>
           </div>
         </div>
       </div>
-
-      <form method="post" action="/createRoom">
-        <input type="submit">
-      </form>
-
     </div>
 
     <footer>
