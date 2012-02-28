@@ -38,6 +38,19 @@ describe('addRoom', function() {
     expect(success).toBeTruthy();
   });
 
+  it('does not allow a non a-z0-9 room name', function() {
+    var success = roomController.addRoom('abcdefgü');
+    expect(success).toBeFalsy();
+    var success = roomController.addRoom('abcdefg,');
+    expect(success).toBeFalsy();
+    var success = roomController.addRoom('•');
+    expect(success).toBeFalsy();
+    var success = roomController.addRoom('');
+    expect(success).toBeFalsy();
+    var success = roomController.addRoom(' ');
+    expect(success).toBeFalsy();
+  });
+
   it('adds several rooms', function() {
     var success = roomController.addRoom('hijklmn');
     expect(success).toBeTruthy();
