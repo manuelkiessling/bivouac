@@ -11,7 +11,8 @@
     domain.Room,
     chatd.start(httpd.start(
       process.cwd() + '/lib/client',
-      roomController
+      roomController,
+      filesharing
       )
     ),
     connectionController
