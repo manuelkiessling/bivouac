@@ -5,7 +5,7 @@ global.$ = global.jQuery = require('jQuery').create(window);
 
 var requirejs = require('requirejs');
 
-requirejs([__dirname + '/../../../../lib/client/scripts/lib/chat.js'], function(chat) {
+requirejs([__dirname + '/../../../../src/client/scripts/lib/chat.js'], function(chat) {
 
   describe('start', function() {
 

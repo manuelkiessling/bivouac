@@ -5,7 +5,7 @@ global.jQuery = require('jQuery').create(window);
 
 var requirejs = require('requirejs');
 
-requirejs([__dirname + '/../../../../lib/client/scripts/lib/fileupload.js'], function(fileupload) {
+requirejs([__dirname + '/../../../../src/client/scripts/lib/fileupload.js'], function(fileupload) {
 
   describe('Fileupload', function() {
 

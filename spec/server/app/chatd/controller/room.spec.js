@@ -1,5 +1,5 @@
 "use strict";
-var roomController = require('../../../../../lib/server/app/chatd/controller/room.js');
+var roomController = require('../../../../../src/server/app/chatd/controller/room.js');
 
 var mocks = {
   Room: function(name) {

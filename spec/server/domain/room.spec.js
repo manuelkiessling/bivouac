@@ -1,5 +1,5 @@
 "use strict";
-var Room = require('../../../lib/server/domain/room.js').Room;
+var Room = require('../../../src/server/domain/room.js').Room;
 
 describe('addUser', function() {
 

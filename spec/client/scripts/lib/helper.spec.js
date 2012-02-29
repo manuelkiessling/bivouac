@@ -1,7 +1,7 @@
 "use strict";
 var requirejs = require('requirejs');
 
-requirejs([__dirname + '/../../../../lib/client/scripts/lib/helper.js'], function(helper) {
+requirejs([__dirname + '/../../../../src/client/scripts/lib/helper.js'], function(helper) {
 
   describe('urlParam', function() {
 
