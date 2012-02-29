@@ -1,13 +1,12 @@
 # bivouac
-Non-public group chat with easy file sharing - work in progress
+Web-based group chat with easy drag&drop file sharing
 
 
 ## About
 
-bivouac is a work in progress project which aims to provide an open-source
-software package which allows to easily setup and run non-public web-based
-group chats with dead-simple file-sharing (drag a file into the chat, and
-it's immediately available as a download for all chat members).
+bivouac provides an open source software package which allows to easily setup
+and run web-based group chats with dead-simple file-sharing (drag a file into
+the chat, and it's immediately available as a download for all chat members).
 
 Besides these "feature goals", my secondary goal is to learn how to architect
 Node.js applications that are relatively complex, with domain-driven design
@@ -15,7 +14,11 @@ and a strong separation of concerns in mind.
 
 bivouac is written in JavaScript, for the Node.js platform.
 
+
 ## Installation
+
+Once the current stable release of Node.js is installed, follow these steps to
+start the chat server:
 
     git clone https://github.com/ManuelKiessling/bivouac.git
     cd bivouac
@@ -23,6 +26,7 @@ bivouac is written in JavaScript, for the Node.js platform.
     node ./bivouac.js
 
 Then open your browser and point it at http://localhost:8080/
+
 
 ## License
 
