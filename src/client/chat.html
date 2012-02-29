@@ -44,7 +44,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <a href="#" onclick="$('#loginModal').modal('hide');" class="btn btn-primary">Enter chat</a>
+            <a href="#" onclick="$('#loginModal').modal('hide');" class="btn btn-success">Enter chat</a>
           </div>
         </div>
       </div>
@@ -93,11 +93,13 @@
               </div>
 
               <div id="uploadformarea">
-                <form id="uploadform" enctype="multipart/form-data" method="post" target="uploadframe">
-                  <input id="uploadfilefield" type="file" name="file" multiple="multiple">
-                  <input type="submit" class="btn btn-default" value="Upload">
-                </form>
-                <iframe style="display: none;" src="/uploadframe.html" width="0" height="0" name="uploadframe" id="uploadframe"></iframe>
+                <div id="uploadforminnerarea">
+                  <form id="uploadform" enctype="multipart/form-data" method="post" target="uploadframe">
+                    <input id="uploadfilefield" type="file" name="file" multiple="multiple">
+                    <input type="submit" class="btn btn-success" value="Start upload">
+                  </form>
+                  <iframe style="display: none;" src="/uploadframe.html" width="0" height="0" name="uploadframe" id="uploadframe"></iframe>
+                </div>
               </div>
 
             </div>
