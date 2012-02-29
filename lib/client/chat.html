@@ -58,11 +58,16 @@
                 <b>Simply type along</b> to talk
                 with other people in this chat.
               </p>
-              <p>
+              <p id="dragdropuploadnote">
                 In order <b>to share files, simply drag'n'drop</b>
                 them onto the chat area, and they will be automatically
                 uploaded and presented to the other users in the
                 chat. You can also drag multiple files.
+              </p>
+              <p id="traditionaluploadnote">
+                In order <b>to share files</b>, simply upload them using
+                the form below the chat. They will be automatically presented
+                to the other users in the chat.
               </p>
             </div>
             <div id="uploadprogressarea" class="well">
@@ -78,9 +83,7 @@
 
             <div id="chatarea">
 
-              <div id="filedroparea">
-                <div id="messages"></div>
-              </div>
+              <div id="messages"></div>
 
               <div id="inputarea">
                 <label id="chatprompt" class="control-label" for="input">
@@ -89,7 +92,16 @@
                 <input id="input" type="text">
               </div>
 
+              <div id="uploadformarea">
+                <form id="uploadform" enctype="multipart/form-data" method="post" target="uploadframe">
+                  <input id="uploadfilefield" type="file" name="file" multiple="multiple">
+                  <input type="submit" class="btn btn-default" value="Upload">
+                </form>
+                <iframe style="display: none;" src="/uploadframe.html" width="0" height="0" name="uploadframe" id="uploadframe"></iframe>
+              </div>
+
             </div>
+
           </div>
         </div>
       </div>
