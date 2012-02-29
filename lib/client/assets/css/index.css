@@ -1,5 +1,9 @@
 @import url('/assets/css/bootstrap/bootstrap.min.css');
 
+.modal-backdrop, .modal-backdrop.fade.in {
+  opacity: 0.6;
+}
+
 html, body {
   height: 100%;
 }
@@ -99,14 +103,14 @@ a.brand span.subtitle {
 #input {
   color: #000;
   font-weight: bold;
-  background-color: #ffe;
+  background-color: #cce7f5;
   vertical-align: top;
   width: 580px;
   height: 23px;
   border-radius: 3px;
   padding-left: 114px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.075) inset;
-  border: 1px solid #ccc;
+  border: 1px solid #aaa;
   padding-top: 5px;
   margin-left: -108px;
   margin-bottom: -1px;
@@ -117,7 +121,7 @@ a.brand span.subtitle {
 }
 
 #chatprompt {
-  background-color: #EEEEEE;
+  background-color: #08C;
   display: inline;
   font-weight: bold;
   left: 3px;
