@@ -89,6 +89,7 @@ a.brand span.subtitle {
 #messages div.message.file.inline img {
   background-color: #fff;
   height: 50px;
+  max-width: 630px;
   border: 1px solid #eee;
   border-radius: 4px;
   padding: 8px;
