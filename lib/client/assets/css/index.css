@@ -121,6 +121,7 @@ a.brand span.subtitle {
 }
 
 #chatprompt {
+  color: #fff;
   background-color: #08C;
   display: inline;
   font-weight: bold;
