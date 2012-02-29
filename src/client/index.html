@@ -25,14 +25,14 @@
       </header>
 
       <div id="modals">
-        <div class="modal fade" id="createChatModal">
+        <div class="modal fade" id="createchatmodal">
           <div class="modal-header">
             <h3>Create a new chat</h3>
           </div>
           <div class="modal-body">
 
             <p>
-              Welcome to bivouac. This service lets you create non-public
+              Welcome to <span class="brand">bivouac</span>. This service lets you create non-public
               group chat rooms with easy filesharing  - literally in just one click.
             </p>
 
@@ -47,7 +47,7 @@
           <div class="modal-footer">
             <form method="post" action="/createRoom">
               <fieldset>
-                <input type="submit" value="Create and enter chat" class="btn btn-primary">
+                <input id="createchatbutton" type="submit" value="Create and enter chat ⇛" class="btn btn-primary">
               </fieldset>
             </form>
           </div>
@@ -55,8 +55,5 @@
       </div>
     </div>
 
-    <footer>
-      bivouac is © 2012 by <a href="http://manuel.kiessling.net/" title="The Log Book Of Manuel Kiessling">Manuel Kiessling</a>. Visit <a href="https://github.com/ManuelKiessling/bivouac" title="The bivouac GitHub repository">the project homepage</a> on GitHub.
-    </footer>
   </body>
 </html>

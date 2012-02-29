@@ -35,6 +35,21 @@ a.brand span.subtitle {
   border-radius: 0;
 }
 
+#createchatmodal div.modal-footer {
+  padding-bottom: 0;
+}
+
+#createchatbutton {
+  font-weight: bold;
+  font-size: 110%;
+  padding: 10px;
+}
+
+p span.brand {
+  font-weight: bold;
+  color: #08c;
+}
+
 .well {
   background-color: #f9f9f9;
 }

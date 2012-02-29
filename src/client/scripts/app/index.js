@@ -3,8 +3,6 @@ define(["jquery",
         "common"],
 
         function($) {
-
-          $('#createChatModal').modal();
-
+          $('#createchatmodal').modal();
         }
 );
