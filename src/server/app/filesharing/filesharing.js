@@ -1,7 +1,7 @@
 "use strict";
-var util = require('util');
-var fs = require('fs');
-var mime = require('mime');
+var util       = require('util');
+var fs         = require('fs');
+var mime       = require('mime');
 var formidable = require('formidable');
 
 var filepath = function(roomname, filename) {

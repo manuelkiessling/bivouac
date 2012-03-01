@@ -1,5 +1,5 @@
 "use strict";
-var util = require('util');
+var util   = require('util');
 var domain = require('./domain.js');
 
 var Room = function(name) {

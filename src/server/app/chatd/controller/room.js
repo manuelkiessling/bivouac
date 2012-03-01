@@ -1,16 +1,19 @@
+"use strict";
 var uuid = require('node-uuid');
-var objectRenderer = require('../renderer/object.js');
+
 var Room;
 var chatd;
 var connectionController;
+var renderer;
 var rooms = {};
 var connectionControllers = {};
 var initialized = false;
 
-var init = function(theRoom, theChatd, theConnectionController) {
+var init = function(theRoom, theChatd, theConnectionController, theRenderer) {
   Room = theRoom;
   chatd = theChatd;
   connectionController = theConnectionController;
+  renderer = theRenderer;
   initialized = true;
 }
 
@@ -35,7 +38,7 @@ var addRoom = function(name) {
   var room = new Room(name);
   rooms[name] = room;
   var newConnectionController = connectionController.create();
-  newConnectionController.attachRenderer(objectRenderer);
+  newConnectionController.attachRenderer(renderer);
   newConnectionController.attachRoomAndChatd(room, chatd.getNamespacedChatd(room.name));
   connectionControllers[name] = newConnectionController;
   console.log('Created room ' + name);

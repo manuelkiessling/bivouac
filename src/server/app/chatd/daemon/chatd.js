@@ -1,16 +1,22 @@
 "use strict";
-var util = require('util');
+var util         = require('util');
 var EventEmitter = require('events').EventEmitter;
 
-var IncomingHandler = function() {}
+var IncomingHandler;
+var io;
+var Chatd;
+var NamespacedChatd;
+
+
+IncomingHandler = function() {}
 util.inherits(IncomingHandler, EventEmitter);
 
 IncomingHandler.prototype.receive = function(type, data) {
   this.emit(type, data.toString());
 }
 
-var io;
-var Chatd = function() {}
+
+Chatd = function() {}
 
 Chatd.prototype.start = function(webChatd) {
   io = require('socket.io').listen(webChatd);
@@ -24,7 +30,8 @@ Chatd.prototype.getNamespacedChatd = function(namespace) {
   return namespacedChatd;
 }
 
-var NamespacedChatd = function() {}
+
+NamespacedChatd = function() {}
 util.inherits(NamespacedChatd, EventEmitter);
 
 NamespacedChatd.prototype.start = function(namespace) {
