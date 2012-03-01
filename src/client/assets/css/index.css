@@ -62,11 +62,11 @@ p span.brand {
   display: none;
 }
 
-.chrome #dragdropuploadnote, .firefox #dragdropuploadnote {
+.chrome #dragdropuploadnote, .gecko #dragdropuploadnote {
   display: block;
 }
 
-.chrome #traditionaluploadnote, .firefox #traditionaluploadnote {
+.chrome #traditionaluploadnote, .gecko #traditionaluploadnote {
   display: none;
 }
 
@@ -164,7 +164,7 @@ p span.brand {
   border-radius: 3px;
 }
 
-.chrome #uploadformarea, .firefox #uploadformarea {
+.chrome #uploadformarea, .gecko #uploadformarea {
   display: none;
 }
 
