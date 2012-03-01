@@ -33,31 +33,32 @@
     Not surprisingly, this is where the web server is actually implemented.
     It mainly handles three types of http requests:
 
-    POST requests to /createRoom trigger the roomController, which creates a
+    POST requests to /createRoom trigger the roomsController, which creates a
     new "Room" domain object and sets up its connection with the chat daemon
 
     Requests to /upload and /download are passed to the filesharing module,
     which takes care of the file operations, and uploads also trigger the
-    roomController which takes care of informing the chat users within this
+    roomsController which takes care of informing the chat users within this
     room about the new download that is available.
 
   chatd:
     This is mainly a facade for Socket.io. It's the place where the main
     socket is started, namespaced sockets can be requested (by the
-    roomController - every room is attached to a namespaced Socket.io socket),
-    and socket events are passed to the right place (e.g., the roomController
-    takes care of creating a new connectionController when a new room is
-    created, and links the room, connectionController, and namespaced socket
+    roomsController - every room is attached to a namespaced Socket.io socket),
+    and socket events are passed to the right place (e.g., the roomsController
+    takes care of creating a new connectionsController when a new room is
+    created, and links the room, connectionsController, and namespaced socket
     together, making events on the namespaced socket ending up in the
-    connectionController).
+    connectionsController).
 
-  roomController:
-    As said, takes care of handling all existing room, mapping them to a
-    connectionController, which it previously mapped to a connectionController.
-    Think of the roomController as the switching point of the whole server.
+  roomsController:
+    As said, takes care of handling all existing rooms, mapping them to a
+    connectionsController, which it previously mapped to a namespaced chat
+    daemon. Think of the roomsController as the switching point of the whole
+    server.
 
-  connectionController:
-    For every room, the roomController creates a new connectionController which
+  connectionsController:
+    For every room, the roomsController creates a new connectionsController which
     takes care of all the chat-user connections for this room
 
   objectRenderer:
@@ -67,24 +68,24 @@
  */
 
 (function () {
-  var domain               = require('./src/server/domain/domain.js');
-  var filesharing          = require('./src/server/app/filesharing/filesharing.js');
-  var httpd                = require('./src/server/app/httpd/httpd.js');
-  var chatd                = require('./src/server/app/chatd/daemon/chatd.js');
-  var roomController       = require('./src/server/app/chatd/controller/room.js');
-  var connectionController = require('./src/server/app/chatd/controller/connection.js');
-  var objectRenderer       = require('./src/server/app/chatd/renderer/object.js');
+  var domain                = require('./src/server/domain/domain.js');
+  var filesharing           = require('./src/server/app/filesharing/filesharing.js');
+  var httpd                 = require('./src/server/app/httpd/httpd.js');
+  var chatd                 = require('./src/server/app/chatd/daemon/chatd.js');
+  var roomsController       = require('./src/server/app/chatd/controller/rooms.js');
+  var connectionsController = require('./src/server/app/chatd/controller/connections.js');
+  var objectRenderer        = require('./src/server/app/chatd/renderer/object.js');
 
-  roomController.init(
-    domain.Room,                        // the roomController uses this constructor to create new rooms
+  roomsController.init(
+    domain.Room,                        // the roomsController uses this constructor to create new rooms
     chatd.start(                        // the Socket.io daemon is started, and...
       httpd.start(                      // ...the http daemon is passed in, which chatd needs to attach itself to
         process.cwd() + '/src/client',  // the webserver needs to know the root folder from which static files should be served
-        roomController,                 // the webserver needs the roomController in order to trigger it when a /createRoom request arrives
+        roomsController,                // the webserver needs the roomsController in order to trigger it when a /createRoom request arrives
         filesharing                     // the webserver needs the filesharing object in order to trigger it when upload or download requests arrive
       )
     ),
-    connectionController,               // the roomController needs the connectionController for each rooms it creates
-    objectRenderer                      // the roomController uses the passed in renderer and passes it on to the connectionController, which uses it...
+    connectionsController,              // the roomsController needs the connectionsController for each rooms it creates
+    objectRenderer                      // the roomsController uses the passed in renderer and passes it on to the connectionsController, which uses it...
   );                                    // ...to render outgoing chat messages
 })();

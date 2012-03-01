@@ -1,5 +1,5 @@
 "use strict";
-var roomController = require('../../../../../src/server/app/chatd/controller/room.js');
+var roomsController = require('../../../../../src/server/app/chatd/controller/rooms.js');
 
 var mocks = {
   Room: function(name) {
@@ -13,7 +13,7 @@ var mocks = {
   handleUpload: function(filename, type) {}
 };
 
-var connectionController = {
+var connectionsController = {
     create: function() {
       return {
         attachRenderer: mocks.attachRenderer,
@@ -26,51 +26,51 @@ var connectionController = {
 describe('addRoom', function() {
 
   it('does not add a room if it was not initialized', function() {
-    var success = roomController.addRoom('abcdefg');
+    var success = roomsController.addRoom('abcdefg');
     expect(success).toBeFalsy();
   });
 
   it('adds a room if it was initialized', function() {
     spyOn(mocks, 'Room').andCallThrough();
-    roomController.init(mocks.Room, mocks.chatd, connectionController);
-    var success = roomController.addRoom('abcdefg');
+    roomsController.init(mocks.Room, mocks.chatd, connectionsController);
+    var success = roomsController.addRoom('abcdefg');
     expect(mocks.Room).toHaveBeenCalledWith('abcdefg');
     expect(success).toBeTruthy();
   });
 
   it('does not allow a non a-z0-9- room name', function() {
-    var success = roomController.addRoom('abcdefgü');
+    var success = roomsController.addRoom('abcdefgü');
     expect(success).toBeFalsy();
-    var success = roomController.addRoom('abcdefg,');
+    var success = roomsController.addRoom('abcdefg,');
     expect(success).toBeFalsy();
-    var success = roomController.addRoom('•');
+    var success = roomsController.addRoom('•');
     expect(success).toBeFalsy();
-    var success = roomController.addRoom('');
+    var success = roomsController.addRoom('');
     expect(success).toBeFalsy();
-    var success = roomController.addRoom(' ');
+    var success = roomsController.addRoom(' ');
     expect(success).toBeFalsy();
   });
 
   it('adds several rooms', function() {
-    var success = roomController.addRoom('hi-jklmn');
+    var success = roomsController.addRoom('hi-jklmn');
     expect(success).toBeTruthy();
-    var success = roomController.addRoom('opqrstu');
+    var success = roomsController.addRoom('opqrstu');
     expect(success).toBeTruthy();
-    var success = roomController.addRoom('vwxyz');
+    var success = roomsController.addRoom('vwxyz');
     expect(success).toBeTruthy();
   });
 
   it('does not allow to create a room with an existing name', function() {
-    roomController.addRoom('abcdefg');
-    var success = roomController.addRoom('abcdefg');
+    roomsController.addRoom('abcdefg');
+    var success = roomsController.addRoom('abcdefg');
     expect(success).toBeFalsy();
   });
 
   it('sets up the connection controller for the new room', function() {
-    spyOn(connectionController, 'create').andCallThrough();
+    spyOn(connectionsController, 'create').andCallThrough();
     spyOn(mocks, 'attachRoomAndChatd');
-    roomController.addRoom('1234567890');
-    expect(connectionController.create).toHaveBeenCalled();
+    roomsController.addRoom('1234567890');
+    expect(connectionsController.create).toHaveBeenCalled();
     expect(mocks.attachRoomAndChatd).toHaveBeenCalledWith({ name: '1234567890' }, 'namespaced socket');
   });
 
@@ -79,7 +79,7 @@ describe('addRoom', function() {
 describe('generateRoomname', function() {
 
   it('generates a room name', function() {
-    expect(roomController.generateRoomname()).toMatch(/^[a-z0-9\-]{36}$/);
+    expect(roomsController.generateRoomname()).toMatch(/^[a-z0-9\-]{36}$/);
   });
 
 });

@@ -7,7 +7,7 @@ var path        = require('path');
 var fs          = require('fs');
 var util        = require('util');
 
-var start = function(documentRoot, roomController, filesharing) {
+var start = function(documentRoot, roomsController, filesharing) {
   var server = http.createServer(function(request, response) {
     var uriPath = url.parse(request.url).pathname;
     var filename;
@@ -17,8 +17,8 @@ var start = function(documentRoot, roomController, filesharing) {
 
     if (uriPath == '/createRoom' && request.method.toLowerCase() == 'post') {
       request.on('end', function() {
-        roomname = roomController.generateRoomname();
-        var success = roomController.addRoom(roomname);
+        roomname = roomsController.generateRoomname();
+        var success = roomsController.addRoom(roomname);
         if (success) {
           response.writeHead(302, {'Location': '/chat.html?roomname=' + roomname});
           response.end();
@@ -38,7 +38,7 @@ var start = function(documentRoot, roomController, filesharing) {
           response.end(JSON.stringify(error));
         } else {
           console.log('Notifying chat about file "' + filename + '"');
-          roomController.handleUpload(roomname, filename, filetype);
+          roomsController.handleUpload(roomname, filename, filetype);
           response.writeHead(200, {'Content-Type': 'application/json'});
           response.end(JSON.stringify('ok'));
         }
