@@ -1,5 +1,5 @@
 # bivouac
-Web-based group chat with easy drag&drop file sharing
+Zero-setup non-public group chat with super-easy file sharing
 
 ![Screenshots](http://manuelkiessling.github.com/bivouac/assets/images/github-screenshot-box.png)
 
