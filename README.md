@@ -21,7 +21,7 @@ bivouac is written in JavaScript, for the Node.js platform.
 Once the current stable release of Node.js is installed, follow these steps to
 start the chat server:
 
-    git clone https://github.com/ManuelKiessling/bivouac.git
+    git clone git://github.com/ManuelKiessling/bivouac.git
     cd bivouac
     npm install
     node ./bivouac.js
