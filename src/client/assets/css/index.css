@@ -139,7 +139,7 @@ p span.brand {
   height: 23px;
   border-radius: 3px;
   padding-left: 114px;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.075) inset;
+  box-shadow: 16px 4px 14px rgba(0, 136, 204, 0.3) inset;
   border: 1px solid #aaa;
   padding-top: 5px;
   margin-left: -108px;
@@ -153,6 +153,8 @@ p span.brand {
 #chatprompt {
   color: #fff;
   background-color: #08C;
+  background-image: -webkit-linear-gradient(top, #08C,#006597);
+  background-image: -moz-linear-gradient(top, #08C,#006597);
   display: inline;
   font-weight: bold;
   left: 3px;
