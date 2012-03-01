@@ -1,6 +1,7 @@
 # bivouac
 Web-based group chat with easy drag&drop file sharing
 
+![Screenshots](http://manuelkiessling.github.com/bivouac/assets/images/github-screenshot-box.png)
 
 ## About
 
