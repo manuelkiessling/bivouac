@@ -28,6 +28,9 @@ start the chat server:
 
 Then open your browser and point it at http://localhost:8080/
 
+## Get in touch
+
+Find me on Twitter as [@manuelkiessling](https://twitter.com/manuelkiessling) or send me an email at [manuel@kiessling.net](mailto:manuel@kiessling.net)
 
 ## License
 
