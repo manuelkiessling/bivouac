@@ -25,33 +25,6 @@ var ConnectionsController = function() {
   this.namespacedChatd;
   this.room;
 
-  this.attachRoomAndChatd = function(theRoom, theNamespacedChatd) {
-    var that = this;
-    this.room = theRoom;
-    this.namespacedChatd = theNamespacedChatd;
-
-    this.namespacedChatd.on('newConnection', function(incomingHandler, outgoingHandler) {
-      var user;
-      incomingHandler.on('newUser', function(name) {
-        that.userId = that.userId + 1;
-
-        user = new domain.User(that.userId, name);
-        that.room.addUser(user);
-
-        that.outgoingHandlers[user] = outgoingHandler;
-
-        deliver.call(that);
-      });
-
-      incomingHandler.on('newMessage', function(message) {
-        var communication = new domain.UserCommunication(user, message);
-        that.room.addCommunication(communication);
-
-        deliver.call(that);
-      });
-    });
-  }
-
   this.sendDownloadCommunication = function(filename, type) {
     var communication = new domain.DownloadCommunication(
       filename,
@@ -66,6 +39,33 @@ var ConnectionsController = function() {
 
 ConnectionsController.prototype.attachRenderer = function(theRenderer) {
  this.renderer = theRenderer;
+}
+
+ConnectionsController.prototype.attachRoomAndChatd = function(theRoom, theNamespacedChatd) {
+  var that = this;
+  this.room = theRoom;
+  this.namespacedChatd = theNamespacedChatd;
+
+  this.namespacedChatd.on('newConnection', function(incomingHandler, outgoingHandler) {
+    var user;
+    incomingHandler.on('newUser', function(name) {
+      that.userId = that.userId + 1;
+
+      user = new domain.User(that.userId, name);
+      that.room.addUser(user);
+
+      that.outgoingHandlers[user] = outgoingHandler;
+
+      deliver.call(that);
+    });
+
+    incomingHandler.on('newMessage', function(message) {
+      var communication = new domain.UserCommunication(user, message);
+      that.room.addCommunication(communication);
+
+      deliver.call(that);
+    });
+  });
 }
 
 module.exports = ConnectionsController;
