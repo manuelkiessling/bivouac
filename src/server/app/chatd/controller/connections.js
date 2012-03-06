@@ -24,17 +24,6 @@ var ConnectionsController = function() {
   this.renderer;
   this.namespacedChatd;
   this.room;
-
-  this.sendDownloadCommunication = function(filename, type) {
-    var communication = new domain.DownloadCommunication(
-      filename,
-      type,
-      '/download/' + encodeURIComponent(filename) + '?roomname=' + this.room.name
-    );
-    this.room.addCommunication(communication);
-    deliver.call(this);
-  };
-
 }
 
 ConnectionsController.prototype.attachRenderer = function(theRenderer) {
@@ -67,5 +56,15 @@ ConnectionsController.prototype.attachRoomAndChatd = function(theRoom, theNamesp
     });
   });
 }
+
+ConnectionsController.prototype.sendDownloadCommunication = function(filename, type) {
+  var communication = new domain.DownloadCommunication(
+    filename,
+    type,
+    '/download/' + encodeURIComponent(filename) + '?roomname=' + this.room.name
+  );
+  this.room.addCommunication(communication);
+  deliver.call(this);
+};
 
 module.exports = ConnectionsController;
