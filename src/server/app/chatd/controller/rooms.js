@@ -37,10 +37,10 @@ var addRoom = function(name) {
   }
   var room = new Room(name);
   rooms[name] = room;
-  var newconnectionsController = connectionsController.create();
-  newconnectionsController.attachRenderer(renderer);
-  newconnectionsController.attachRoomAndChatd(room, chatd.getNamespacedChatd(room.name));
-  connectionsControllers[name] = newconnectionsController;
+  var newConnectionsController = connectionsController.create();
+  newConnectionsController.attachRenderer(renderer);
+  newConnectionsController.attachRoomAndChatd(room, chatd.getNamespacedChatd(room.name));
+  connectionsControllers[name] = newConnectionsController;
   console.log('Created room ' + name);
   return true;
 }
