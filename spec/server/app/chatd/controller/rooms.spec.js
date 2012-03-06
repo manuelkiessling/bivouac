@@ -8,20 +8,14 @@ var mocks = {
 
   chatd: { getNamespacedChatd: function() { return 'namespaced socket' } },
 
-  attachRenderer: function(renderer) {},
   attachRoomAndChatd: function(room, chatd) {},
-  handleUpload: function(filename, type) {}
-};
 
-var connectionsController = {
-    create: function() {
-      return {
-        attachRenderer: mocks.attachRenderer,
-        attachRoomAndChatd: mocks.attachRoomAndChatd,
-        handleUpload: mocks.handleUpload
-      }
-    }
+  ConnectionsController: function() {
+    this.attachRenderer = function(renderer) {};
+    this.attachRoomAndChatd = mocks.attachRoomAndChatd;
+    this.handleUpload = function(filename, type) {};
   }
+};
 
 describe('addRoom', function() {
 
@@ -32,7 +26,7 @@ describe('addRoom', function() {
 
   it('adds a room if it was initialized', function() {
     spyOn(mocks, 'Room').andCallThrough();
-    roomsController.init(mocks.Room, mocks.chatd, connectionsController);
+    roomsController.init(mocks.Room, mocks.chatd, mocks.ConnectionsController);
     var success = roomsController.addRoom('abcdefg');
     expect(mocks.Room).toHaveBeenCalledWith('abcdefg');
     expect(success).toBeTruthy();
@@ -67,10 +61,11 @@ describe('addRoom', function() {
   });
 
   it('sets up the connection controller for the new room', function() {
-    spyOn(connectionsController, 'create').andCallThrough();
+    spyOn(mocks, 'ConnectionsController').andCallThrough();
     spyOn(mocks, 'attachRoomAndChatd');
+    roomsController.init(mocks.Room, mocks.chatd, mocks.ConnectionsController);
     roomsController.addRoom('1234567890');
-    expect(connectionsController.create).toHaveBeenCalled();
+    expect(mocks.ConnectionsController).toHaveBeenCalled();
     expect(mocks.attachRoomAndChatd).toHaveBeenCalledWith({ name: '1234567890' }, 'namespaced socket');
   });
 

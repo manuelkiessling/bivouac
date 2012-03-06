@@ -73,7 +73,7 @@
   var httpd                 = require('./src/server/app/httpd/httpd.js');
   var chatd                 = require('./src/server/app/chatd/daemon/chatd.js');
   var roomsController       = require('./src/server/app/chatd/controller/rooms.js');
-  var connectionsController = require('./src/server/app/chatd/controller/connections.js');
+  var ConnectionsController = require('./src/server/app/chatd/controller/connections.js');
   var objectRenderer        = require('./src/server/app/chatd/renderer/object.js');
 
   roomsController.init(
@@ -85,7 +85,7 @@
         filesharing                     // the webserver needs the filesharing object in order to trigger it when upload or download requests arrive
       )
     ),
-    connectionsController,              // the roomsController needs the connectionsController for each rooms it creates
+    ConnectionsController,              // the roomsController needs the connectionsController for each rooms it creates
     objectRenderer                      // the roomsController uses the passed in renderer and passes it on to the connectionsController, which uses it...
   );                                    // ...to render outgoing chat messages
 })();

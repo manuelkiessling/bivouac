@@ -3,7 +3,7 @@ var uuid = require('node-uuid');
 
 var Room;
 var chatd;
-var connectionsController;
+var ConnectionsController;
 var renderer;
 var rooms = {};
 var connectionsControllers = {};
@@ -12,7 +12,7 @@ var initialized = false;
 var init = function(theRoom, theChatd, theConnectionsController, theRenderer) {
   Room = theRoom;
   chatd = theChatd;
-  connectionsController = theConnectionsController;
+  ConnectionsController = theConnectionsController;
   renderer = theRenderer;
   initialized = true;
 }
@@ -37,10 +37,10 @@ var addRoom = function(name) {
   }
   var room = new Room(name);
   rooms[name] = room;
-  var newConnectionsController = connectionsController.create();
-  newConnectionsController.attachRenderer(renderer);
-  newConnectionsController.attachRoomAndChatd(room, chatd.getNamespacedChatd(room.name));
-  connectionsControllers[name] = newConnectionsController;
+  var connectionsController = new ConnectionsController();
+  connectionsController.attachRenderer(renderer);
+  connectionsController.attachRoomAndChatd(room, chatd.getNamespacedChatd(room.name));
+  connectionsControllers[name] = connectionsController;
   console.log('Created room ' + name);
   return true;
 }

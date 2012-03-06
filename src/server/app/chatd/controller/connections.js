@@ -1,75 +1,71 @@
 "use strict";
 var domain = require('../../../domain/domain.js');
 
-var create = function() {
-  var userId = 0;
-  var outgoingHandlers = {};
-  var renderer;
-  var namespacedChatd;
-  var room;
+var deliver = function() {
+  var communications = this.room.getCommunications();
+  var numberOfCommunications = communications.length;
 
-  var attachRenderer = function(theRenderer) {
-    renderer = theRenderer;
+  if (numberOfCommunications > 0) {
+    var users = this.room.getUsers();
+    var numberOfUsers = users.length;
+
+    for (var i = 0; i < numberOfCommunications; i++) {
+      for (var j = 0; j < numberOfUsers; j++) {
+        this.outgoingHandlers[users[j]](this.renderer.render(communications[i]));
+      }
+      this.room.markCommunicationAsDelivered(communications[i]);
+    }
+  }
+};
+
+var ConnectionsController = function() {
+  this.userId = 0;
+  this.outgoingHandlers = {};
+  this.renderer;
+  this.namespacedChatd;
+  this.room;
+
+  this.attachRenderer = function(theRenderer) {
+    this.renderer = theRenderer;
   }
 
-  var attachRoomAndChatd = function(theRoom, theNamespacedChatd) {
-    room = theRoom;
-    namespacedChatd = theNamespacedChatd;
-    var user;
+  this.attachRoomAndChatd = function(theRoom, theNamespacedChatd) {
+    var that = this;
+    this.room = theRoom;
+    this.namespacedChatd = theNamespacedChatd;
 
-    namespacedChatd.on('newConnection', function(incomingHandler, outgoingHandler) {
+    this.namespacedChatd.on('newConnection', function(incomingHandler, outgoingHandler) {
+      var user;
       incomingHandler.on('newUser', function(name) {
-        userId = userId + 1;
+        that.userId = that.userId + 1;
 
-        user = new domain.User(userId, name);
-        room.addUser(user);
+        user = new domain.User(that.userId, name);
+        that.room.addUser(user);
 
-        outgoingHandlers[user] = outgoingHandler;
+        that.outgoingHandlers[user] = outgoingHandler;
 
-        deliver();
+        deliver.call(that);
       });
 
       incomingHandler.on('newMessage', function(message) {
         var communication = new domain.UserCommunication(user, message);
-        room.addCommunication(communication);
+        that.room.addCommunication(communication);
 
-        deliver();
+        deliver.call(that);
       });
     });
   }
 
-  var sendDownloadCommunication = function(filename, type) {
+  this.sendDownloadCommunication = function(filename, type) {
     var communication = new domain.DownloadCommunication(
       filename,
       type,
-      '/download/' + encodeURIComponent(filename) + '?roomname=' + room.name
+      '/download/' + encodeURIComponent(filename) + '?roomname=' + this.room.name
     );
-    room.addCommunication(communication);
-    deliver();
+    this.room.addCommunication(communication);
+    deliver.call(this);
   };
 
-  var deliver = function() {
-    var communications = room.getCommunications();
-    var numberOfCommunications = communications.length;
-
-    if (numberOfCommunications > 0) {
-      var users = room.getUsers();
-      var numberOfUsers = users.length;
-
-      for (var i = 0; i < numberOfCommunications; i++) {
-        for (var j = 0; j < numberOfUsers; j++) {
-          outgoingHandlers[users[j]](renderer.render(communications[i]));
-        }
-        room.markCommunicationAsDelivered(communications[i]);
-      }
-    }
-  };
-
-  return {
-    attachRenderer: attachRenderer,
-    attachRoomAndChatd: attachRoomAndChatd,
-    sendDownloadCommunication: sendDownloadCommunication
-  }
 }
 
-exports.create = create;
+module.exports = ConnectionsController;
