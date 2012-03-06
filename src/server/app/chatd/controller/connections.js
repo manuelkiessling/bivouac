@@ -25,10 +25,6 @@ var ConnectionsController = function() {
   this.namespacedChatd;
   this.room;
 
-  this.attachRenderer = function(theRenderer) {
-    this.renderer = theRenderer;
-  }
-
   this.attachRoomAndChatd = function(theRoom, theNamespacedChatd) {
     var that = this;
     this.room = theRoom;
@@ -66,6 +62,10 @@ var ConnectionsController = function() {
     deliver.call(this);
   };
 
+}
+
+ConnectionsController.prototype.attachRenderer = function(theRenderer) {
+ this.renderer = theRenderer;
 }
 
 module.exports = ConnectionsController;
