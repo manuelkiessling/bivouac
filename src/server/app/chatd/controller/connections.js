@@ -1,6 +1,8 @@
 "use strict";
 var domain = require('../../../domain/domain.js');
 
+var userId = 0;
+
 var deliver = function() {
   var communications = this.room.getCommunications();
   var numberOfCommunications = communications.length;
@@ -19,7 +21,6 @@ var deliver = function() {
 };
 
 var ConnectionsController = function() {
-  this.userId = 0;
   this.outgoingHandlers = {};
   this.renderer;
   this.namespacedChatd;
@@ -38,9 +39,9 @@ ConnectionsController.prototype.attachRoomAndChatd = function(theRoom, theNamesp
   this.namespacedChatd.on('newConnection', function(incomingHandler, outgoingHandler) {
     var user;
     incomingHandler.on('newUser', function(name) {
-      that.userId = that.userId + 1;
+      userId = userId + 1;
 
-      user = new domain.User(that.userId, name);
+      user = new domain.User(userId, name);
       that.room.addUser(user);
 
       that.outgoingHandlers[user] = outgoingHandler;
