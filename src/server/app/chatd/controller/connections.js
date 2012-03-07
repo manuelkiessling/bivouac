@@ -39,7 +39,7 @@ ConnectionsController.prototype.attachRoomAndChatd = function(theRoom, theNamesp
   this.namespacedChatd.on('newConnection', function(incomingHandler, outgoingHandler) {
     var user;
     incomingHandler.on('newUser', function(name) {
-      userId = userId + 1;
+      userId += 1;
 
       user = new domain.User(userId, name);
       that.room.addUser(user);
