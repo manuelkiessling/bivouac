@@ -28,7 +28,7 @@ var ConnectionsController = function() {
 };
 
 ConnectionsController.prototype.attachRenderer = function(theRenderer) {
- this.renderer = theRenderer;
+  this.renderer = theRenderer;
 };
 
 ConnectionsController.prototype.attachRoomAndChatd = function(theRoom, theNamespacedChatd) {
