@@ -40,7 +40,7 @@ define(["jquery",
               $messages
                 .height(($('body').height() - 250) + 'px')
                 .scrollTop(999999);
-            }
+            };
             resizeChatArea();
             $(window).resize(resizeChatArea);
 

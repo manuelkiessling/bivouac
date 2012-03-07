@@ -13,6 +13,6 @@ var render = function(communication) {
   }
 
   return renderedCommunication;
-}
+};
 
 exports.render = render;

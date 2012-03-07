@@ -25,11 +25,11 @@ var ConnectionsController = function() {
   this.renderer;
   this.namespacedChatd;
   this.room;
-}
+};
 
 ConnectionsController.prototype.attachRenderer = function(theRenderer) {
  this.renderer = theRenderer;
-}
+};
 
 ConnectionsController.prototype.attachRoomAndChatd = function(theRoom, theNamespacedChatd) {
   var that = this;
@@ -56,7 +56,7 @@ ConnectionsController.prototype.attachRoomAndChatd = function(theRoom, theNamesp
       deliver.call(that);
     });
   });
-}
+};
 
 ConnectionsController.prototype.sendDownloadCommunication = function(filename, type) {
   var communication = new domain.DownloadCommunication(

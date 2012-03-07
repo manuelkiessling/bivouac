@@ -15,7 +15,7 @@ var init = function(theRoom, theChatd, theConnectionsController, theRenderer) {
   ConnectionsController = theConnectionsController;
   renderer = theRenderer;
   initialized = true;
-}
+};
 
 var generateRoomname = function() {
   var buffer = new Buffer(32);
@@ -26,7 +26,7 @@ var generateRoomname = function() {
       return name;
     }
   }
-}
+};
 
 var addRoom = function(name) {
   if (!name.match(/^[a-z0-9\-]*$/) || name === '') {
@@ -43,11 +43,11 @@ var addRoom = function(name) {
   connectionsControllers[name] = connectionsController;
   console.log('Created room ' + name);
   return true;
-}
+};
 
 var handleUpload = function(roomname, filename, filetype) {
   connectionsControllers[roomname].sendDownloadCommunication(filename, filetype);
-}
+};
 
 exports.init = init;
 exports.addRoom = addRoom;

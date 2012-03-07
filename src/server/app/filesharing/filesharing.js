@@ -21,7 +21,7 @@ var upload = function(roomname, request, callback) {
         callback(false, fn, ft);
       }
     });
-  }
+  };
 
   form = new formidable.IncomingForm();
 
@@ -48,7 +48,7 @@ var upload = function(roomname, request, callback) {
   });
 
   form.parse(request);
-}
+};
 
 var download = function(roomname, filename, response, startCallback, errorCallback) {
   var path = filepath(roomname, filename);
@@ -63,7 +63,7 @@ var download = function(roomname, filename, response, startCallback, errorCallba
         errorCallback(error);
       }).pipe(response);
     });
-}
+};
 
 exports.upload = upload;
 exports.download = download;

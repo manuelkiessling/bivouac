@@ -8,30 +8,30 @@ var Chatd;
 var NamespacedChatd;
 
 
-IncomingHandler = function() {}
+IncomingHandler = function() {};
 util.inherits(IncomingHandler, EventEmitter);
 
 IncomingHandler.prototype.receive = function(type, data) {
   this.emit(type, data.toString());
-}
+};
 
 
-Chatd = function() {}
+Chatd = function() {};
 
 Chatd.prototype.start = function(webChatd) {
   io = require('socket.io').listen(webChatd);
   io.set('log level', 1);
   return this;
-}
+};
 
 Chatd.prototype.getNamespacedChatd = function(namespace) {
   var namespacedChatd = new NamespacedChatd();
   namespacedChatd.start(namespace);
   return namespacedChatd;
-}
+};
 
 
-NamespacedChatd = function() {}
+NamespacedChatd = function() {};
 util.inherits(NamespacedChatd, EventEmitter);
 
 NamespacedChatd.prototype.start = function(namespace) {
@@ -55,6 +55,6 @@ NamespacedChatd.prototype.start = function(namespace) {
     }
     that.emit('newConnection', incomingHandler, outgoingHandler);
   });
-}
+};
 
 module.exports = new Chatd();

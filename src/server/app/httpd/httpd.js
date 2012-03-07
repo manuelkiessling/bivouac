@@ -99,6 +99,6 @@ var start = function(documentRoot, roomsController, filesharing) {
     });
   }).listen(8080);
   return server;
-}
+};
 
 exports.start = start;
