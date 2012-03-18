@@ -3,9 +3,6 @@ Zero-setup non-public group chat with super-easy file sharing
 
 ![Screenshots](http://manuelkiessling.github.com/bivouac/assets/images/github-screenshot-box.png)
 
-## Demo
-
-Try the demo installation at http://tinyurl.com/BivouacFirstBeta
 
 ## About
 
