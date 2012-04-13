@@ -5,7 +5,9 @@ Zero-setup non-public group chat with super-easy file sharing
 
 ## Demo
 
-Try the demo installation at http://tinyurl.com/BivouacFirstBeta
+You can try a demo installation of bivouac at http://bivouac.kiessling.net
+
+Please note that this is alpha software - expect bugs and weird behaviour.
 
 ## About
 
