@@ -18,7 +18,8 @@ Besides these "feature goals", my secondary goal is to learn how to architect
 Node.js applications that are relatively complex, with domain-driven design
 and a strong separation of concerns in mind.
 
-bivouac is written in JavaScript, for the Node.js platform.
+bivouac is written in JavaScript, for the Node.js platform. It has been
+verified to work with Node.js v0.6.12.
 
 
 ## Installation
