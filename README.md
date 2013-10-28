@@ -5,9 +5,8 @@ Zero-setup non-public group chat with super-easy file sharing
 
 ## Demo
 
-You can try a demo installation of bivouac at http://bivouac.kiessling.net
+Check out the demo installation of bivouac at http://46.38.250.111:8080/
 
-Please note that this is alpha software - expect bugs and weird behaviour.
 
 ## About
 
@@ -19,7 +18,8 @@ Besides these "feature goals", my secondary goal is to learn how to architect
 Node.js applications that are relatively complex, with domain-driven design
 and a strong separation of concerns in mind.
 
-bivouac is written in JavaScript, for the Node.js platform.
+bivouac is written in JavaScript, for the Node.js platform. It has been
+verified to work with Node.js v0.6.12.
 
 
 ## Installation
