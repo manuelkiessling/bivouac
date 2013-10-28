@@ -4,7 +4,7 @@
   "main": "./bivouac.js",
   "version": "0.0.1",
   "author": "Manuel Kiessling (http://github.com/ManuelKiessling)",
-  "engine": "node >= 0.6.10",
+  "engine": "node = 0.6.12",
   "dependencies": {
     "socket.io": "0.8.x",
     "formidable": "1.0.x",
