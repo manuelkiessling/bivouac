@@ -3,6 +3,10 @@ Zero-setup non-public group chat with super-easy file sharing
 
 ![Screenshots](http://manuelkiessling.github.com/bivouac/assets/images/github-screenshot-box.png)
 
+## Demo
+
+Check out the demo installation of bivouac at http://46.38.250.111:8080/
+
 
 ## About
 
