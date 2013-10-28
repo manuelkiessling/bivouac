@@ -1,7 +1,11 @@
 # bivouac
+
+[![Build Status](https://travis-ci.org/manuelkiessling/bivouac.png?branch=master)](https://travis-ci.org/manuelkiessling/bivouac)
+
 Zero-setup non-public group chat with super-easy file sharing
 
 ![Screenshots](http://manuelkiessling.github.com/bivouac/assets/images/github-screenshot-box.png)
+
 
 ## Demo
 
@@ -19,7 +23,7 @@ Node.js applications that are relatively complex, with domain-driven design
 and a strong separation of concerns in mind.
 
 bivouac is written in JavaScript, for the Node.js platform. It has been
-verified to work with Node.js v0.6.12.
+verified to work with Node.js v0.10.21.
 
 
 ## Installation
@@ -34,10 +38,12 @@ start the chat server:
 
 Then open your browser and point it at http://localhost:8080/
 
+
 ## Get in touch
 
 Find me on Twitter as [@manuelkiessling](https://twitter.com/manuelkiessling)
 or send me an email at [manuel@kiessling.net](mailto:manuel@kiessling.net)
+
 
 ## License
 
